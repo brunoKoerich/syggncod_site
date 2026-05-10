@@ -1,0 +1,400 @@
+/* Fonte normal */
+@font-face {
+    font-family: 'Merienda';
+    src: url('../fonts/Merienda-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Fonte bold */
+@font-face {
+    font-family: 'Merienda';
+    src: url('../fonts/Merienda-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root{
+  --bg: #0b0e13;
+  --card: #151a22;
+  --border: rgba(255,255,255,0.08);
+  --text: #d7dce2;
+  --title: #ffffff;
+  --accent: #c89b3c;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Merienda', sans-serif;
+}
+
+ul>li{
+    margin-left:60px;
+}
+
+body{
+    
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      /* O gradiente rgba(0,0,0,0.7) cria a camada de escurecimento */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+        url('imagens/leitura.png');
+    
+    /* Mantém a imagem fixa enquanto você rola a página */
+    background-attachment: fixed;
+    
+    /* Garante que a imagem cubra toda a tela sem distorcer */
+    background-size: cover;
+    
+    /* Centraliza a imagem */
+    background-position: center;
+    
+    /* Previne repetição caso o conteúdo seja muito longo */
+    background-repeat: no-repeat;
+    
+    /* Define uma cor de fundo sólida enquanto a imagem carrega */
+    background-color: #05070c;
+    
+    /* Garante que o html ocupe toda a altura */
+    min-height: 100%;
+}
+
+.book{
+  width: 90%;
+  max-width: 900px;
+}
+
+/* ===== CABEÇALHO RPG (TOPO) ===== */
+.rpg-header{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto 18px;
+  padding: 18px 18px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(26,31,42,0.95), rgba(10,12,18,0.95));
+  box-shadow: 0 28px 55px rgba(0,0,0,0.55);
+  overflow: hidden;
+}
+
+.rpg-header__glow{
+  position: absolute;
+  inset: -120px -120px auto -120px;
+  height: 260px;
+  background: radial-gradient(circle at 35% 45%, rgba(200,155,60,0.22), transparent 60%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.rpg-header__inner{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.rpg-header__brand{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 240px;
+}
+
+.rpg-header__sigil{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background: linear-gradient(180deg, rgba(34,40,58,1), rgba(18,22,35,1));
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.55);
+}
+
+.rpg-header__titles{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rpg-header__title{
+  font-size: 1.35rem;
+  color: #fff;
+  letter-spacing: 0.6px;
+  line-height: 1.1;
+}
+
+.rpg-header__subtitle{
+  font-size: 0.95rem;
+  color: rgba(215,220,226,0.85);
+}
+
+.rpg-header__meta{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rpg-header__meta a{
+  text-decoration: none;
+}
+
+.rpg-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(34,40,58,0.65), rgba(16,20,30,0.65));
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+  color: rgba(215,220,226,0.92);
+  font-size: 0.92rem;
+  user-select: none;
+}
+
+.rpg-chip__icon{
+  opacity: 0.95;
+}
+
+.rpg-chip--accent{
+  border-color: rgba(200,155,60,0.35);
+  background: linear-gradient(180deg, rgba(200,155,60,0.16), rgba(16,20,30,0.65));
+}
+
+.rpg-header__divider{
+  position: relative;
+  margin-top: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,155,60,0.55), rgba(255,255,255,0.10), transparent);
+  opacity: 0.95;
+}
+
+/* ===== SEÇÃO DE CAPÍTULOS (ÍNDICE) ===== */
+.chapter-index{
+  margin: 0 auto 18px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(21,26,34,0.92), rgba(10,12,18,0.92));
+  box-shadow: 0 28px 55px rgba(0,0,0,0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-index::before{
+  content: "";
+  position: absolute;
+  inset: -140px -140px auto -140px;
+  height: 280px;
+  background: radial-gradient(circle at 35% 35%, rgba(200,155,60,0.14), transparent 60%);
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.chapter-index__top{
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.chapter-index__title{
+  color: var(--title);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.chapter-index__subtitle{
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.chapter-index__badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(200,155,60,0.28);
+  background: linear-gradient(180deg, rgba(200,155,60,0.12), rgba(16,20,30,0.55));
+  color: rgba(215,220,226,0.95);
+  font-size: 0.92rem;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.chapter-list{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.chapter-btn{
+  width: 100%;
+  text-align: left;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(34,40,58,0.55), rgba(16,20,30,0.55));
+  color: rgba(215,220,226,0.92);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 76px;
+}
+
+.chapter-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0,0,0,0.45);
+  border-color: rgba(200,155,60,0.28);
+}
+
+.chapter-btn.active{
+  border-color: rgba(200,155,60,0.55);
+  background: linear-gradient(180deg, rgba(200,155,60,0.14), rgba(16,20,30,0.65));
+  box-shadow: 0 18px 32px rgba(0,0,0,0.55);
+}
+
+.chapter-btn__top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.chapter-btn__name{
+  font-weight: 700;
+  color: var(--title);
+  font-size: 0.98rem;
+}
+
+.chapter-btn__num{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.18);
+}
+
+.chapter-btn__desc{
+  font-size: 0.92rem;
+  opacity: 0.82;
+  line-height: 1.25;
+}
+
+/* ===== CARD CAPÍTULO ===== */
+.card{
+  display: none;
+  background: linear-gradient(180deg, #1a1f2a, #0f131c);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  animation: fadeIn 0.6s ease;
+}
+
+.card.active{
+  display: block;
+}
+
+.card h1,
+.card h2{
+  color: var(--title);
+  margin-bottom: 16px;
+}
+
+.card h1{
+  font-size: 2rem;
+}
+
+.card h2{
+  font-size: 1.6rem;
+}
+
+.card p{
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+.card img{
+  width: 100%;
+  border-radius: 14px;
+  margin: 24px 0;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* ===== BOTÕES ===== */
+.navigation{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+button{
+  background: linear-gradient(180deg, #22283a, #141927);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--title);
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+button:disabled{
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 720px){
+  .rpg-header__inner{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rpg-header__meta{
+    justify-content: flex-start;
+  }
+
+  .chapter-list{
+    grid-template-columns: 1fr;
+  }
+}
