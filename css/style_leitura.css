@@ -1,0 +1,495 @@
+/* Fonte normal */
+ @font-face {
+     font-family: 'Merienda';
+     src: url('../fonts/Merienda-Regular.ttf') format('truetype');
+     font-weight: 400;
+     font-style: normal;
+}
+/* Fonte bold */
+ @font-face {
+     font-family: 'Merienda';
+     src: url('../fonts/Merienda-Bold.ttf') format('truetype');
+     font-weight: 700;
+     font-style: normal;
+}
+ :root{
+     --bg: #0b0e13;
+     --card: #151a22;
+     --border: rgba(255,255,255,0.08);
+     --text: #d7dce2;
+     --title: #ffffff;
+     --accent: #aed997;
+}
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Merienda', sans-serif;
+}
+ html{
+     scroll-behavior:smooth;
+}
+ body{
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(200,155,60,0.08) 0%,
+            rgba(200,155,60,0.02) 18%,
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            rgba(80,120,255,0.08) 0%,
+            rgba(80,120,255,0.02) 20%,
+            transparent 45%
+        ),
+
+        linear-gradient(
+            180deg,
+            #0b0d12 0%,
+            #11151d 35%,
+            #161b24 100%
+        );
+
+    background-attachment: fixed;
+    color:#e8e8e8;
+     overflow-x:hidden;
+}
+section ul li{
+    margin-left: 40px;
+}
+/* ========================================================= SCROLLBAR ========================================================= */
+ ::-webkit-scrollbar{
+     width:10px;
+}
+ ::-webkit-scrollbar-track{
+     background:#0b1018;
+}
+ ::-webkit-scrollbar-thumb{
+     background:#1d2b3a;
+     border-radius:999px;
+}
+/* ========================================================= PROGRESS BAR ========================================================= */
+ .reading-progress{
+     position:fixed;
+     top:0;
+     left:0;
+     width:100%;
+     height:4px;
+     background:rgba(255,255,255,0.04);
+     z-index:9999;
+}
+ .reading-progress__bar{
+     width:0%;
+     height:100%;
+     background:linear-gradient(90deg,#aed997,#5ea8ff);
+     transition:width .1s linear;
+}
+/* ========================================================= LAYOUT ========================================================= */
+ .layout{
+     display:flex;
+     min-height:100vh;
+}
+/* ========================================================= SIDEBAR ========================================================= */
+ .sidebar{
+     width:320px;
+     background:rgba(8,12,18,0.88);
+     border-right:1px solid rgba(255,255,255,0.06);
+     position:fixed;
+     top:0;
+     left:0;
+     bottom:0;
+     overflow-y:auto;
+     z-index:100;
+     backdrop-filter:blur(18px);
+}
+ .sidebar__top{
+     padding:40px 28px 28px;
+     border-bottom:1px solid rgba(255,255,255,0.05);
+}
+ .logo{
+     display:flex;
+     gap:16px;
+     align-items:center;
+}
+ .logo__icon{
+     width:100px;
+     height:100px;
+     border-radius:18px;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     font-size:1.8rem;
+}
+ .logo__icon img{
+     width:100px;
+     height:100px;
+}
+ .logo__title{
+     font-size:1.5rem;
+     font-weight:700;
+}
+ .logo__subtitle{
+     margin-top:4px;
+     color:#8ea1b5;
+     font-size:.9rem;
+}
+ .sidebar__chapters{
+     padding:20px;
+}
+ .chapter-btn{
+     width:100%;
+     border:none;
+     cursor:pointer;
+     background:transparent;
+     color:#d8d8d8;
+     text-align:left;
+     padding:18px;
+     border-radius:18px;
+     margin-bottom:12px;
+     transition:.25s ease;
+     border:1px solid transparent;
+}
+ .chapter-btn:hover{
+     background:rgba(255,255,255,0.04);
+}
+ .chapter-btn.active{
+     background:linear-gradient( 135deg, rgba(200,155,60,0.18), rgba(94,168,255,0.08) );
+     border:1px solid rgba(200,155,60,0.4);
+}
+ .chapter-btn__number{
+     color:#aed997;
+     font-size:.8rem;
+     margin-bottom:6px;
+     display:block;
+}
+ .chapter-btn__title{
+     font-weight:600;
+     line-height:1.4;
+}
+/* ========================================================= CONTENT ========================================================= */
+ .content{
+     margin-left:320px;
+     width:100%;
+}
+/* ========================================================= HERO ========================================================= */
+ .hero{
+     min-height:50vh;
+     display:flex;
+     align-items:center;
+     padding:80px;
+     position:relative;
+     color: #00bf66;
+     background:
+        linear-gradient(
+            rgba(5,8,12,0.78),
+            rgba(5,8,12,0.82)
+        ),
+        url("./../imagens/capa_leitura.png");
+
+     background-size:cover;
+     background-position:center;
+     background-repeat:no-repeat;
+}
+ .hero::before{
+     content:"";
+     position:absolute;
+     inset:0;
+     background: radial-gradient(circle at center, rgba(94,168,255,0.08), transparent 40%);
+     pointer-events:none;
+}
+ .hero__inner{
+     max-width:900px;
+     position:relative;
+     z-index:2;
+}
+ .hero__badge{
+     display:inline-flex;
+     gap:10px;
+     align-items:center;
+     padding:10px 18px;
+     border-radius:999px;
+     background:rgba(255,255,255,0.04);
+     border:1px solid rgba(255,255,255,0.08);
+     margin-bottom:28px;
+     color:#b8c6d5;
+}
+ .hero h1{
+     font-size:4rem;
+     line-height:1.1;
+     margin-bottom:20px;
+}
+ .hero p{
+     max-width:760px;
+     line-height:1.9;
+     color:#c7dfc9;
+     font-size:1.08rem;
+}
+/* ========================================================= CHAPTER ========================================================= */
+ .chapter{
+     display:none;
+     max-width:980px;
+     margin:auto;
+     padding: 80px 60px 120px;
+     animation:fade .45s ease;
+}
+ .chapter.active{
+     display:block;
+}
+ @keyframes fade{
+     from{
+         opacity:0;
+         transform:translateY(20px);
+    }
+     to{
+         opacity:1;
+         transform:translateY(0);
+    }
+}
+ .chapter__meta{
+     display:flex;
+     gap:12px;
+     flex-wrap:wrap;
+     margin-bottom:24px;
+}
+ .chip{
+     padding:8px 14px;
+     border-radius:999px;
+     background:rgba(255,255,255,0.04);
+     border:1px solid rgba(255,255,255,0.05);
+     color:#9eb2c6;
+     font-size:.85rem;
+}
+ .chapter h2{
+     font-size:3rem;
+     line-height:1.2;
+     margin-bottom:40px;
+     color:#f1f1f1;
+}
+ .chapter h3{
+     font-size:1.6rem;
+     margin-top:60px;
+     margin-bottom:22px;
+     color:#d6e5f5;
+}
+ .chapter p{
+     line-height:2;
+     color:#c7d0da;
+     font-size:1.08rem;
+     margin-bottom:1.8rem;
+}
+
+.chapter > p:first-of-type::first-letter{
+     float:left;
+     font-size:4.5rem;
+     line-height:.9;
+     margin-right:12px;
+     color:#aed997;
+}
+/* ========================================================= BLOCKQUOTE ========================================================= */
+ blockquote{
+     margin:40px 0;
+     padding:30px;
+     border-left:4px solid #5ea8ff;
+     background:rgba(94,168,255,0.05);
+     border-radius:0 18px 18px 0;
+}
+ blockquote p{
+     margin:0;
+     color:#d7e8ff;
+}
+/* ========================================================= ARCHIVE BLOCK ========================================================= */
+ .archive-log{
+     margin:50px 0;
+     background:rgba(255,255,255,0.03);
+     border:1px solid rgba(94,168,255,0.15);
+     border-left:4px solid #5ea8ff;
+     padding:26px;
+     border-radius:18px;
+}
+ .archive-log span{
+     display:block;
+     margin-bottom:14px;
+     color:#5ea8ff;
+     letter-spacing:2px;
+     font-size:.82rem;
+}
+ .archive-log p{
+     margin:0;
+     color:#dce9f5;
+}
+/* ========================================================= LORE TERMS ========================================================= */
+ .lore{
+     color:#5ea8ff;
+     border-bottom:1px dashed #5ea8ff;
+     cursor:help;
+}
+/* ========================================================= NAVIGATION ========================================================= */
+ .navigation{
+     position:sticky;
+     bottom:0;
+     display:flex;
+     gap:20px;
+     padding:20px;
+     background:rgba(7,11,17,0.88);
+     backdrop-filter:blur(14px);
+     border-top:1px solid rgba(255,255,255,0.05);
+     z-index:50;
+}
+ .navigation button{
+     flex:1;
+     border:none;
+     padding:18px;
+     border-radius:16px;
+     cursor:pointer;
+     font-size:1rem;
+     font-weight:600;
+     color:white;
+     transition:.25s ease;
+     background:linear-gradient( 135deg, #172231, #0f1722 );
+     border:1px solid rgba(255,255,255,0.05);
+}
+ .navigation button:hover{
+     transform:translateY(-2px);
+     border-color:rgba(200,155,60,0.4);
+}
+/* ========================================================= MOBILE ========================================================= */
+ .mobile-toggle{
+     display:none;
+}
+ @media(max-width:980px){
+     .sidebar{
+         transform:translateX(-100%);
+         transition:.3s ease;
+    }
+     .sidebar.open{
+         transform:translateX(0);
+    }
+     .content{
+         margin-left:0;
+    }
+     .mobile-toggle{
+         display:flex;
+         position:fixed;
+         top:18px;
+         left:18px;
+         width:50px;
+         height:50px;
+         border:none;
+         border-radius:14px;
+         z-index:999;
+         background:#101826;
+         color:white;
+         align-items:center;
+         justify-content:center;
+         font-size:1.2rem;
+    }
+     .hero{
+         padding:120px 28px 60px;
+    }
+     .hero h1{
+         font-size:2.6rem;
+    }
+     .chapter{
+         padding:60px 24px 100px;
+    }
+     .chapter h2{
+         font-size:2.1rem;
+    }
+     .navigation{
+         flex-direction:column;
+    }
+}
+/*IMAGENS*/
+ .cinematic-image{
+     position:relative;
+     margin: 60px 0;
+     border-radius:28px;
+     overflow:hidden;
+     border:1px solid rgba(255,255,255,0.08);
+     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+ .cinematic-image img{
+     width:100%;
+     display:block;
+     min-height:320px;
+     max-height:620px;
+     object-fit:cover;
+     transition:transform .6s ease;
+}
+ .cinematic-image:hover img{
+     transform:scale(1.03);
+}
+ .cinematic-image__overlay{
+     position:absolute;
+     left:0;
+     right:0;
+     bottom:0;
+     padding:40px;
+     background:linear-gradient( to top, rgba(0,0,0,0.88), transparent );
+}
+ .cinematic-image__overlay span{
+     display:block;
+     color:#5ea8ff;
+     letter-spacing:2px;
+     font-size:.78rem;
+     margin-bottom:10px;
+}
+ .cinematic-image__overlay h4{
+     font-size:1.5rem;
+     color:white;
+}
+/*IMAGEN STILO 2*/
+/* ===================================================== STORY BLOCK ===================================================== */
+ .story-block{
+     margin:70px 0;
+     line-height:2;
+     color:#d0d8e2;
+}
+/* ===================================================== IMAGEM ===================================================== */
+ .story-block__image{
+     width:340px;
+     margin-bottom:18px;
+}
+ .story-block__image img{
+     width:100%;
+     display:block;
+     border-radius:24px;
+     border:1px solid rgba(255,255,255,0.08);
+     box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+     object-fit:cover;
+}
+/* ===================================================== TEXTO ===================================================== */
+ .story-block__content h3{
+     margin-bottom:18px;
+     font-size:1.8rem;
+     color:#f1f1f1;
+}
+ .story-block__content p{
+     margin-bottom:1.6rem;
+}
+/* ===================================================== IMAGEM ESQUERDA ===================================================== */
+ .story-block.left .story-block__image{
+     float:left;
+     margin-right:28px;
+}
+/* ===================================================== IMAGEM DIREITA ===================================================== */
+ .story-block.right .story-block__image{
+     float:right;
+     margin-left:28px;
+}
+/* ===================================================== LIMPA FLOAT ===================================================== */
+ .story-block::after{
+     content:"";
+     display:block;
+     clear:both;
+}
+/* ===================================================== MOBILE ===================================================== */
+ @media(max-width:900px){
+     .story-block__image{
+         float:none !important;
+         width:100%;
+         margin: 0 0 24px 0 !important;
+    }
+}

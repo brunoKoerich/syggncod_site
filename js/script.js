@@ -1,133 +1,185 @@
+/* =========================================================
+   GALERIA LIGHTBOX
+========================================================= */
+
 const galleryImages = document.querySelectorAll(".gallery img");
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 
-const closeBtn = document.getElementById("closeLightbox");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const lightboxCloseBtn =
+  document.getElementById("closeLightbox");
 
-let currentIndex = 0;
+const lightboxPrevBtn =
+  document.getElementById("prevBtn");
+
+const lightboxNextBtn =
+  document.getElementById("nextBtn");
+
+let currentGalleryIndex = 0;
 
 /* ABRIR */
 
-galleryImages.forEach((img, index) => {
+if(galleryImages.length > 0){
 
-  img.addEventListener("click", () => {
+  galleryImages.forEach((img, index) => {
 
-    currentIndex = index;
+    img.addEventListener("click", () => {
 
-    showImage();
+      currentGalleryIndex = index;
 
-    lightbox.classList.add("active");
+      showGalleryImage();
+
+      lightbox.classList.add("active");
+
+    });
 
   });
 
-});
+}
 
 /* MOSTRAR IMAGEM */
 
-function showImage() {
+function showGalleryImage(){
 
-  lightboxImage.src = galleryImages[currentIndex].src;
+  lightboxImage.src =
+    galleryImages[currentGalleryIndex].src;
 
 }
 
 /* FECHAR */
 
-closeBtn.addEventListener("click", () => {
+if(lightboxCloseBtn){
 
-  lightbox.classList.remove("active");
+  lightboxCloseBtn.addEventListener("click", () => {
 
-});
+    lightbox.classList.remove("active");
+
+  });
+
+}
 
 /* PREV */
 
-prevBtn.addEventListener("click", () => {
+if(lightboxPrevBtn){
 
-  currentIndex--;
+  lightboxPrevBtn.addEventListener("click", () => {
 
-  if(currentIndex < 0) {
-    currentIndex = galleryImages.length - 1;
-  }
+    currentGalleryIndex--;
 
-  showImage();
+    if(currentGalleryIndex < 0){
 
-});
+      currentGalleryIndex =
+        galleryImages.length - 1;
+
+    }
+
+    showGalleryImage();
+
+  });
+
+}
 
 /* NEXT */
 
-nextBtn.addEventListener("click", () => {
+if(lightboxNextBtn){
 
-  currentIndex++;
+  lightboxNextBtn.addEventListener("click", () => {
 
-  if(currentIndex >= galleryImages.length) {
-    currentIndex = 0;
-  }
+    currentGalleryIndex++;
 
-  showImage();
+    if(currentGalleryIndex >= galleryImages.length){
 
-});
+      currentGalleryIndex = 0;
+
+    }
+
+    showGalleryImage();
+
+  });
+
+}
 
 /* FECHAR AO CLICAR FORA */
 
-lightbox.addEventListener("click", (e) => {
+if(lightbox){
 
-  if(e.target === lightbox) {
-    lightbox.classList.remove("active");
-  }
+  lightbox.addEventListener("click", (e) => {
 
-});
+    if(e.target === lightbox){
+
+      lightbox.classList.remove("active");
+
+    }
+
+  });
+
+}
 
 /* TECLADO */
 
 document.addEventListener("keydown", (e) => {
 
+  if(!lightbox) return;
+
   if(!lightbox.classList.contains("active")) return;
 
-  if(e.key === "Escape") {
+  if(e.key === "Escape"){
+
     lightbox.classList.remove("active");
+
   }
 
-  if(e.key === "ArrowRight") {
-    nextBtn.click();
+  if(e.key === "ArrowRight"){
+
+    lightboxNextBtn.click();
+
   }
 
-  if(e.key === "ArrowLeft") {
-    prevBtn.click();
+  if(e.key === "ArrowLeft"){
+
+    lightboxPrevBtn.click();
+
   }
 
 });
 
-
-
-
-/* =========================
+/* =========================================================
    SCROLL TOP
-========================= */
+========================================================= */
 
-const scrollTopBtn = document.getElementById("scrollTopBtn");
+const scrollTopBtn =
+  document.getElementById("scrollTopBtn");
 
 /* MOSTRAR BOTÃO */
 
 window.addEventListener("scroll", () => {
 
-  if(window.scrollY > 400) {
+  if(!scrollTopBtn) return;
+
+  if(window.scrollY > 400){
+
     scrollTopBtn.classList.add("show");
-  } else {
+
+  }else{
+
     scrollTopBtn.classList.remove("show");
+
   }
 
 });
 
 /* VOLTAR AO TOPO */
 
-scrollTopBtn.addEventListener("click", () => {
+if(scrollTopBtn){
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  scrollTopBtn.addEventListener("click", () => {
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
   });
 
-});
-
+}

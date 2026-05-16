@@ -481,21 +481,6 @@ a {
     0 0 45px rgba(0, 212, 255, 0.18);
 }
 
-/* Linha separadora */
-.group-row::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-  transform: translateX(-50%);
-}
 
 /* RESPONSIVO */
 

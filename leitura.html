@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Syggncod — História Principal</title>
+
+    <link rel="stylesheet" href="css/style_leitura.css" />
+</head>
+
+<body>
+
+    <!-- PROGRESS -->
+
+    <div class="reading-progress">
+        <div class="reading-progress__bar"></div>
+    </div>
+
+    <!-- MOBILE -->
+
+    <button class="mobile-toggle" id="mobileToggle">
+        ☰
+    </button>
+
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__top">
+                <div class="logo">
+                    <div class="logo__icon"><img src="imagens/syggncod_sem_fundo.png"/></div>
+                    <div>
+                        <div class="logo__title">
+                        </div>
+                        <div class="logo__subtitle">
+                            Quando os Portais Despertam
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULOS -->
+            <div class="sidebar__chapters">
+                <button class="chapter-btn active" data-file="capitulo_01.html">
+                    <span class="chapter-btn__number">
+                        CAPÍTULO 01
+                    </span>
+                    <div class="chapter-btn__title">
+                        A Semente da Descentralização
+                    </div>
+                </button>
+
+                <button class="chapter-btn" data-file="capitulo_02.html">
+                    <span class="chapter-btn__number">
+                        CAPÍTULO 02
+                    </span>
+                    <div class="chapter-btn__title">
+                        Os Guardiões do Limiar
+                    </div>
+                </button>
+
+                <button class="chapter-btn" data-file="capitulo_02.html">
+                    <span class="chapter-btn__number">
+                        CAPÍTULO 03
+                    </span>
+                    <div class="chapter-btn__title">
+                        ÆON: O Fluxo da Liberdade
+                    </div>
+                </button>
+
+                <button class="chapter-btn" data-file="capitulo_02.html">
+                    <span class="chapter-btn__number">
+                        CAPÍTULO 04
+                    </span>
+                    <div class="chapter-btn__title">
+                        O Olho do Guardião
+                    </div>
+                </button>
+
+                <button class="chapter-btn" data-file="capitulo_02.html">
+                    <span class="chapter-btn__number">
+                        CAPÍTULO 05
+                    </span>
+                    <div class="chapter-btn__title">
+                        Sementes Derivadas
+                    </div>
+                </button>
+
+            </div>
+
+        </aside>
+
+        <main class="content">
+            <!-- HEADER -->
+            <section class="hero">
+                <div class="hero__inner">
+                    <a href="index.html">
+                        <div class="hero__badge">
+                            🏠︎ Página Inicial
+                        </div>
+                    </a>
+                    <h1>Syggncod</h1>
+                    <p>
+                        Uma história sobre descentralização,
+                        liberdade, portais impossíveis e o risco
+                        da humanidade repetir os mesmos erros.
+                    </p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO DINÂMICO -->
+            <section class="chapter active" id="chapterContent"></section>
+            </section>
+
+            <!-- NAVEGAÇÃO -->
+            <div class="navigation">
+                <button id="prev">
+                    ◀ Capítulo anterior
+                </button>
+                <button id="next">
+                    Próximo capítulo ▶
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="js/script_leitura.js"></script>
+
+</body>
+
+</html>
